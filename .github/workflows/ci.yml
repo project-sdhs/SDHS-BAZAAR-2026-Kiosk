@@ -8,9 +8,10 @@ on:
 permissions:
   contents: read
 
+# PR 에서는 새 커밋이 오면 이전 실행을 취소하고, main push 는 끝까지 돌린다.
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   check:
