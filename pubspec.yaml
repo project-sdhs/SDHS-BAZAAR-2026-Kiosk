@@ -1,0 +1,26 @@
+name: bazaar_kiosk
+description: "디지텍 바자회 부스 메뉴판(키오스크) 앱"
+publish_to: 'none'
+
+# 버전: 이름+빌드번호 (Android versionName/versionCode, iOS CFBundleShortVersionString/CFBundleVersion)
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # iOS 스타일 아이콘 폰트 (CupertinoIcons). 다른 패키지도 참조해서 빼면 웹 빌드 경고가 납니다.
+  cupertino_icons: ^1.0.8
+  go_router: ^18.0.2
+  http: ^1.6.0
+  provider: ^6.1.5+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
