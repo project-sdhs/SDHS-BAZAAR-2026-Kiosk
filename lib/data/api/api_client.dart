@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 /// 서버와 통신하는 HTTP 기본 클라이언트.
 ///
-/// 서버 주소는 실행할 때 정합니다 (기본값 http://localhost:3000).
+/// 서버 주소는 실행할 때 정합니다 (기본값 [localBaseUrl] = http://localhost:3000).
 /// `flutter run -d chrome --dart-define=API_BASE_URL=https://api.example.com`
 ///
 /// 사용 예 (repositories 안에서):
@@ -16,10 +16,13 @@ class ApiClient {
     : _http = httpClient ?? http.Client(),
       baseUrl = baseUrl ?? defaultBaseUrl;
 
-  /// `--dart-define=API_BASE_URL=...` 로 넘긴 값, 없으면 로컬 서버.
+  /// `API_BASE_URL` 을 넘기지 않았을 때 쓰는 로컬 서버 주소.
+  static const String localBaseUrl = 'http://localhost:3000';
+
+  /// `--dart-define=API_BASE_URL=...` 로 넘긴 값, 없으면 [localBaseUrl].
   static const String defaultBaseUrl = String.fromEnvironment(
     'API_BASE_URL',
-    defaultValue: 'http://localhost:3000',
+    defaultValue: localBaseUrl,
   );
 
   final http.Client _http;

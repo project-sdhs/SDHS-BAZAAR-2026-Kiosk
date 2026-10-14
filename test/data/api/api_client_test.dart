@@ -20,8 +20,20 @@ void main() {
       );
     });
 
-    test('baseUrl 을 넘기지 않으면 기본값(localhost:3000)을 쓴다', () {
-      expect(ApiClient().baseUrl, 'http://localhost:3000');
+    test('baseUrl 을 넘기지 않으면 defaultBaseUrl 을 쓴다', () {
+      expect(ApiClient().baseUrl, ApiClient.defaultBaseUrl);
+    });
+
+    // `flutter test --dart-define=API_BASE_URL=...` 로 돌려도 통과해야 합니다.
+    test('defaultBaseUrl 은 API_BASE_URL 이 있으면 그 값, 없으면 localhost:3000', () {
+      const hasApiBaseUrl = bool.hasEnvironment('API_BASE_URL');
+      const apiBaseUrl = String.fromEnvironment('API_BASE_URL');
+
+      expect(ApiClient.localBaseUrl, 'http://localhost:3000');
+      expect(
+        ApiClient.defaultBaseUrl,
+        hasApiBaseUrl ? apiBaseUrl : ApiClient.localBaseUrl,
+      );
     });
   });
 
