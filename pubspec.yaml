@@ -1,0 +1,16 @@
+name: sdhs_bazaar_flutter
+description: 디지텍 바자회 Flutter 객체지향 통합 예제
+publish_to: none
+version: 1.0.0+1
+environment:
+  sdk: '>=3.8.0 <4.0.0'
+  flutter: '>=3.32.0'
+dependencies:
+  cupertino_icons: ^1.0.8
+  flutter:
+    sdk: flutter
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+flutter:
+  uses-material-design: true
